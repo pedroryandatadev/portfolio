@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="icon" type="image/png" href="img/github-icon.png">
+    <title>Portfólio - Cosmos e Projetos</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -12,43 +11,91 @@
     <canvas id="particles-canvas"></canvas>
 
     <nav>
-        <a href="#" class="logo">Portfolio</a>
+        <a href="#cosmos" class="logo">Portifolio</a>
         <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="https://github.com/pedroryandatadev?tab=repositories" target="_blank">Project's</a>
+            <a href="#cosmos">Home</a>
+            <a href="#projects">Project's</a>
         </div>
     </nav>
 
-    <main>       
-        <h1>Showcase Profile's<br>Access My Repositories</h1>
+    <section id="cosmos">
+        <main>
+            <h1>Showcase Profile's<br>Access my repositories</h1>
+            <div class="cta-container">
+                <a href="#" target="_blank" class="btn btn-streamlit">
+                    <img src="img/streamlit-icon.png" alt="Streamlit">
+                    <span>Streamlit</span>
+                </a>
+                <a href="#" target="_blank" class="btn btn-github">
+                    <img src="img/github-icon.png" alt="Github">
+                    <span>Github</span>
+                </a>
+                <a href="#" target="_blank" class="btn btn-huggingface">
+                    <img src="img/huggingface-icon.png" alt="Hugging Face">
+                    <span>Hugging Face</span>
+                </a>
+                <a href="#" target="_blank" class="btn btn-figma">
+                    <img src="img/figma-icon.png" alt="Figma">
+                    <span>Figma</span>
+                </a>
+                </div>
+        </main>
+    </section>
 
-        <div class="cta-container">
-            <a href="https://share.streamlit.io/user/pedroryandatadev" target="_blank" class="btn btn-streamlit">
-                <img src="img/streamlit-icon.png" alt="Streamlit icon">
-                <span>Streamlit</span>
-            </a>
+    <section id="projects">
+        <div class="projects-carousel-container">
+            <button class="carousel-control carousel-control-prev" id="prevBtn">&#10094;</button>
+            <button class="carousel-control carousel-control-next" id="nextBtn">&#10095;</button>
 
-            <a href="https://github.com/pedroryandatadev" target="_blank" class="btn btn-github">
-                <img src="img/github-icon.png" alt="Github icon">
-                <span>Github</span>
-            </a>
+            <div class="projects-carousel">
+                <div class="carousel-item active">
+                    <div class="project-card">
+                        <div class="project-info">
+                            <h2 class="project-title">Análise de Dados com Python</h2>
+                            <p class="project-description">Descrição detalhada do seu projeto. Explique aqui o problema que você resolveu, as tecnologias utilizadas e os resultados obtidos com a análise.</p>
+                            <div class="project-buttons">
+                                <a href="#" target="_blank" class="project-btn project-btn-github">
+                                    <img src="img/github-icon.png" alt="Github icon">
+                                    <span>Github</span>
+                                </a>
+                                <a href="#" target="_blank" class="project-btn project-btn-streamlit">
+                                    <img src="img/streamlit-icon.png" alt="Streamlit icon">
+                                    <span>Streamlit</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-image-container">
+                            <img src="https://via.placeholder.com/600x500/DEDEDE/333333?text=Imagem+do+Projeto" alt="Imagem de demonstração do projeto">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-item">
+                    <div class="project-card">
+                        <div class="project-info">
+                            <h2 class="project-title">Modelo de Machine Learning</h2>
+                            <p class="project-description">Outra descrição detalhada. Fale sobre o modelo preditivo, a acurácia alcançada e como ele pode ser aplicado no mundo real.</p>
+                            <div class="project-buttons">
+                                <a href="#" target="_blank" class="project-btn project-btn-github">
+                                    <img src="img/github-icon.png" alt="Github icon">
+                                    <span>Github</span>
+                                </a>
+                                <a href="#" target="_blank" class="project-btn project-btn-streamlit">
+                                    <img src="img/streamlit-icon.png" alt="Streamlit icon">
+                                    <span>Streamlit</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-image-container">
+                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*_fR-2Yg-xaWXssnj08Zqeg.jpeg" alt="Imagem de demonstração do projeto 2">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <a href="https://huggingface.co/seu-usuario" target="_blank" class="btn btn-huggingface">
-                <img src="img/huggingface-icon.png" alt="Hugging Face icon">
-                <span>Hugging Face</span>
-            </a>
-
-            <a href="#" target="_blank" class="btn btn-figma">
-                <img src="img/figma-icon.png" alt="Figma icon">
-                <span>Figma</span>
-            </a>
-
-            <a href="#" target="_blank" class="btn btn-tableau">
-                <img src="img/tableau-icon.png" alt="Tableau icon">
-                <span>Tableau</span>
-            </a>
+            <div class="carousel-indicators" id="indicators"></div>
         </div>
-    </main>
+    </section>
 
     <script src="js/script.js"></script>
 </body>

@@ -1,17 +1,16 @@
+// --- Partículas (do código anterior - Mantido) ---
 const canvas = document.getElementById('particles-canvas');
 const ctx = canvas.getContext('2d');
 
 let width, height;
 let particles = [];
 
-// Objeto para rastrear o mouse
 let mouse = {
     x: null,
     y: null,
-    radius: 150 // Raio de interação do mouse
+    radius: 150 
 };
 
-// Event Listeners do Mouse
 window.addEventListener('mousemove', (event) => {
     mouse.x = event.x;
     mouse.y = event.y;
@@ -113,6 +112,72 @@ window.addEventListener('resize', () => {
     init();
 });
 
+// --- Lógica do Carrossel (Nova) ---
+const carousel = document.querySelector('.projects-carousel');
+const items = document.querySelectorAll('.carousel-item');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const indicatorsContainer = document.getElementById('indicators');
+
+let currentIndex = 0;
+
+// Inicializa os indicadores de paginação dinamicamente
+function createIndicators() {
+    for (let i = 0; i < items.length; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (i === currentIndex) dot.classList.add('active');
+        dot.dataset.index = i; // Adiciona o índice como dado
+        dot.addEventListener('click', () => {
+            goToItem(i);
+        });
+        indicatorsContainer.appendChild(dot);
+    }
+}
+
+// Move para um item específico pelo índice
+function goToItem(index) {
+    if (index < 0) {
+        currentIndex = items.length - 1; // Volta ao final
+    } else if (index >= items.length) {
+        currentIndex = 0; // Volta ao início
+    } else {
+        currentIndex = index;
+    }
+    updateCarousel();
+}
+
+// Atualiza a aparência do carrossel
+function updateCarousel() {
+    // Altera a transição por deslocamento de scrollLeft
+    carousel.scrollLeft = currentIndex * carousel.clientWidth;
+
+    // Atualiza o estado ativo dos itens e indicadores
+    items.forEach((item, index) => {
+        item.classList.remove('active');
+        if (index === currentIndex) item.classList.add('active');
+    });
+
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
+        dot.classList.remove('active');
+        if (index === currentIndex) dot.classList.add('active');
+    });
+}
+
+// Adiciona ouvintes de eventos para as setas
+prevBtn.addEventListener('click', () => {
+    goToItem(currentIndex - 1);
+});
+
+nextBtn.addEventListener('click', () => {
+    goToItem(currentIndex + 1);
+});
+
+// --- Inicialização Geral ---
 resize();
 init();
 animate();
+// Inicialização do Carrossel
+createIndicators();
+updateCarousel(); // Garante que o primeiro item esteja visível e indicadores corretos
