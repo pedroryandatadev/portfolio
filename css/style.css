@@ -1,325 +1,180 @@
-/* Reset e Configurações Básicas */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    scroll-behavior: smooth; /* Rolagem suave da página */
+:root {
+    --bg: #111; --text: #eee; --muted: #888; --card: #1e1e1e;
+    --accent: #333; --transition: 0.3s;
 }
 
-/* Configurações para Rolagem de Página (Pular seção) */
-html {
-    scroll-snap-type: y mandatory; /* Força o encaixe no início da seção */
-    height: 100%;
+[data-theme="light"] {
+    --bg: #f5f5f5; --text: #222; --muted: #666; --card: #fff; --accent: #ddd;
 }
 
-body {
-    background-color: #030014;
-    color: white;
-    height: 100%;
-    position: relative;
-    overflow-x: hidden; /* Evita que o carrossel quebre o layout */
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
-/* Canvas para as partículas (fundo) */
-#particles-canvas {
-    position: fixed; /* Fixado em segundo plano */
-    top: 0;
+body { background: var(--bg); color: var(--text); transition: var(--transition); overflow-x: hidden; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+/* Header - AJUSTADO PARA FICAR FIXO */
+header { padding: 20px 0; border-bottom: 1px solid var(--accent); position: fixed; top: 0; width: 100%; z-index: 1000; background: var(--bg); }
+
+.header-content { display: flex; justify-content: space-between; align-items: center; }
+
+/* Nav - AJUSTADO ESPAÇAMENTO */
+nav ul { display: flex; list-style: none; gap: 25px; } /* Gap padrão entre links */
+
+/* Separa o "Portfolio" (primeiro item) dos demais links */
+nav ul li:first-child { margin-right: 40px; } 
+
+nav a { color: var(--muted); text-decoration: none; transition: var(--transition); font-weight: 500; }
+nav a:hover { color: var(--text); }
+
+/* Theme Toggle */
+.theme-toggle { position: relative; width: 60px; height: 34px; cursor: pointer; }
+.theme-toggle input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--accent); border-radius: 34px; display: flex; justify-content: space-between; align-items: center; padding: 0 6px; }
+.slider:before { content: ""; position: absolute; height: 26px; width: 26px; left: 4px; bottom: 4px; background: white; border-radius: 50%; transition: var(--transition); z-index: 2; }
+input:checked + .slider:before { transform: translateX(24px); }
+
+/* Main - Compensação do Header Fixo */
+main { padding-top: 80px; } 
+
+/* About Section */
+.about-section { padding: 80px 0; }
+.about-header-mobile { display: none; text-align: center; margin-bottom: 20px; }
+.about-header-desktop h1 { font-size: 3rem; margin-bottom: 5px; }
+.job-title { color: var(--muted); font-size: 1.2rem; margin-bottom: 20px; }
+
+.about-content { display: flex; align-items: flex-start; gap: 50px; }
+.about-image { flex-shrink: 0; }
+.profile-img { width: 220px; height: 220px; border-radius: 50%; object-fit: cover; background: #555; border: 3px solid var(--accent); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);}
+
+/* BIO TEXT*/
+.bio-text { flex: 1; max-width: 100%; }
+.bio-text p { margin-bottom: 15px; color: var(--muted); line-height: 1.6; word-break: break-all;text-align: justify; } /* Deixa o parágrafo mais "normal" e alinhado */
+
+.about-links { display: flex; gap: 15px; margin-top: 20px; }
+.btn-link { background: var(--accent); color: var(--text); padding: 10px 20px; border-radius: 5px; text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 8px; transition: var(--transition);}
+.btn-link:hover {opacity: 0.8; } /* Um efeitinho leve ao passar o mouse */
+.btn-link img {width: 20px; height: 20px; object-fit: contain; display: block; }
+
+/* Projects Section */
+.projects-section { background: rgba(0,0,0,0.03); padding: 80px 0; text-align: center; }
+.section-title { font-size: 2.5rem; margin-bottom: 10px; }
+.section-subtitle { color: var(--muted); margin-bottom: 50px; }
+
+/* Carousel */
+.carousel-wrapper { position: relative; }
+.carousel-container { overflow: hidden; }
+.carousel-track { display: flex; transition: transform 0.5s ease; }
+.slide { min-width: 100%; padding: 0 10px; }
+.category-title { margin-bottom: 30px; font-size: 1.8rem; }
+
+.projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+
+/* Cards */
+.card { background: var(--card); border-radius: 12px; overflow: hidden; text-align: left; transition: var(--transition); }
+.card-img { height: 180px; background: #666; }
+.card-body { padding: 20px; }
+.card-body h4 { margin-bottom: 10px; }
+.card-body p { font-size: 0.85rem; color: var(--muted); margin-bottom: 20px; text-align: justify; overflow-wrap: break-word; word-wrap: break-word; }
+.card-footer { display: flex; justify-content: flex-end; gap: 15px; }
+.card-footer a { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: bold; }
+
+/* Controls */
+.nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; z-index: 5; }
+.prev { left: -40px; }
+.next { right: -40px; }
+.dots-container { margin-top: 30px; display: flex; justify-content: center; gap: 10px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); cursor: pointer; }
+.dot.active { background: var(--text); }
+
+/* Footer */
+footer { padding: 50px 0; border-top: 1px solid var(--accent); text-align: center; }
+.footer-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 15px; }
+.footer-links a { color: var(--muted); text-decoration: none; }
+
+/* --- Modal de Imagem (Lightbox) --- */
+.modal {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 2000; /* Fica acima do header fixo */
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Atrás de tudo */
-}
-
-/* Barra de Navegação */
-nav {
-    position: fixed; /* Fixada no topo */
     top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100; /* Acima de tudo */
-    padding: 20px 50px;
-    background: rgba(15, 15, 30, 0.6);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: #fff;
-    text-decoration: none;
-}
-
-.nav-links {
-    display: flex;
-    gap: 30px;
-}
-
-.nav-links a {
-    color: #ccc;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: #fff;
-}
-
-/* Estilos Comuns para Seções */
-section {
-    height: 100vh;
-    width: 100%;
-    scroll-snap-align: start; /* Encaixe no início da seção */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    overflow: hidden; /* Evita que o carrossel quebre a seção */
-}
-
-/* --- Estilos da Seção Cosmos --- */
-#cosmos main {
-    text-align: center;
-    padding: 0 50px;
-    padding-top: 100px; /* Espaço para a navbar fixada */
-}
-
-#cosmos h1 {
-    font-size: 3.5rem;
-    line-height: 1.2;
-    font-weight: 800;
-    margin-bottom: 50px;
-    background: linear-gradient(to bottom, #ffffff, #b0b0b0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-#cosmos .cta-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
-    max-width: 800px;
-}
-
-/* Botões do Cosmos (permanecem os mesmos) */
-#cosmos .btn {
-    min-width: 160px;
-    padding: 12px 24px;
-    border-radius: 12px;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid transparent;
-    font-weight: 600;
-    font-size: 0.95rem;
-}
-
-#cosmos .btn img {
-    width: 22px;
-    height: 22px;
-    object-fit: contain;
-}
-
-#cosmos .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-}
-
-#cosmos .btn-streamlit { background-color: #FF4B4B; color: white; }
-#cosmos .btn-streamlit:hover { background-color: #FF3333; box-shadow: 0 0 20px rgba(255, 75, 75, 0.4); }
-#cosmos .btn-github { background-color: #1a1e22; color: white; border: 1px solid rgba(255, 255, 255, 0.1); }
-#cosmos .btn-github:hover { background-color: #24292e; border-color: rgba(255, 255, 255, 0.3); box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); }
-#cosmos .btn-huggingface { background-color: #FFD21E; color: #000; }
-#cosmos .btn-huggingface:hover { background-color: #F8C300; box-shadow: 0 0 20px rgba(255, 210, 30, 0.4); }
-#cosmos .btn-figma { background-color: #1E1E1E; color: white; border: 1px solid #333; }
-#cosmos .btn-figma:hover { border-color: #F24E1E; box-shadow: 0 0 20px rgba(242, 78, 30, 0.3); }
-
-
-/* --- Estilos da Seção Projetos (Nova e com Carrossel) --- */
-.projects-carousel-container {
-    width: 80%;
-    max-width: 1100px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: visible; /* Permite que as setas apareçam fora do carrossel */
-    padding-top: 20px; /* Espaço para não tocar no navbar fixado */
-}
-
-.projects-carousel {
-    width: 100%;
-    display: flex;
-    overflow-x: auto; /* Permite rolagem horizontal */
-    scroll-behavior: smooth; /* Transição suave */
-    scroll-snap-type: x mandatory; /* Encaixe do carrossel */
-    scrollbar-width: none; /* Oculta a barra de rolagem no Firefox */
-}
-
-.projects-carousel::-webkit-scrollbar {
-    display: none; /* Oculta a barra de rolagem no Chrome, Safari, etc. */
-}
-
-.carousel-item {
-    min-width: 100%;
-    flex: 0 0 auto;
-    scroll-snap-align: start; /* Encaixe no início do item */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 50px; /* Espaço para as setas */
-    opacity: 0; /* Oculto por padrão */
-    transition: opacity 0.5s ease; /* Transição de opacidade */
-}
-
-.carousel-item.active {
-    opacity: 1; /* Visível quando ativo */
-}
-
-/* Card do Projeto - Baseado fielmente na imagem modelo */
-.project-card {
-    background-color: #2D2D2D; /* Fundo do card escuro */
-    width: 100%;
-    max-width: 1000px;
-    height: 500px;
-    border-radius: 20px;
-    display: flex;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-.project-info {
-    flex: 1;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.project-title {
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #fff;
-}
-
-.project-description {
-    font-size: 1.1rem;
-    color: #ccc;
-    line-height: 1.6;
-    margin-bottom: 40px;
-}
-
-.project-buttons {
-    display: flex;
-    gap: 16px;
-}
-
-/* Botões do Projeto (menores, Baseados na imagem modelo) */
-.project-btn {
-    padding: 8px 16px;
-    border-radius: 12px;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: all 0.3s;
-}
-
-.project-btn img {
-    width: 18px;
-    height: 18px;
-    object-fit: contain;
-}
-
-.project-btn-github { background-color: rgba(255, 255, 255, 0.1); color: #fff; border: 1px solid rgba(255, 255, 255, 0.2); }
-.project-btn-github:hover { background-color: rgba(255, 255, 255, 0.2); border-color: rgba(255, 255, 255, 0.4); }
-.project-btn-streamlit { background-color: rgba(255, 75, 75, 0.1); color: #FF4B4B; border: 1px solid rgba(255, 75, 75, 0.2); }
-.project-btn-streamlit:hover { background-color: rgba(255, 75, 75, 0.2); border-color: rgba(255, 75, 75, 0.4); }
-
-.project-image-placeholder {
-    width: 450px;
-    background-color: #DEDEDE; /* Cor do espaço da imagem cinza claro */
-    height: 100%;
-}
-
-.project-info {
-    flex: 1; /* Ocupa metade do card */
-    padding: 50px; /* Aumentei um pouco o espaçamento interno para respirar mais */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-/* Container da Imagem à direita */
-.project-image-container {
-    width: 50%; /* Ocupa exatamente a outra metade do card */
-    background-color: #1a1a1a;
-    display: flex;
-}
-
-.project-image-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Faz a imagem preencher o espaço sem ficar achatada */
-}
-
-/* Setas de Controle - Tamanho Reduzido */
-.carousel-control {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.6); 
-    color: white;
-    border: none;
-    width: 45px; /* Diminuído de 60px */
-    height: 45px; /* Diminuído de 60px */
-    border-radius: 50%;
-    font-size: 1.5rem; /* Diminuído de 2.5rem */
-    cursor: pointer;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.85); /* Fundo escuro translúcido */
+    backdrop-filter: blur(5px); /* Dá um desfoque chique no fundo */
     align-items: center;
-    transition: background-color 0.3s;
+    justify-content: center;
 }
 
-.carousel-control-prev { left: -55px; } /* Ajustado o posicionamento */
-.carousel-control-next { right: -55px; } /* Ajustado o posicionamento */
+.modal-content {
+    max-width: 90%;
+    max-height: 85vh; /* Evita que a imagem passe da altura da tela */
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    animation: zoomIn 0.3s ease; /* Animação de entrada */
+}
 
-/* Pontos de Navegação (Indicadores - Baseados fielmente na imagem modelo) */
-.carousel-indicators {
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.close-modal {
     position: absolute;
-    bottom: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 15px;
-    z-index: 10;
-}
-
-.dot {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.3); /* Cor dos pontos escura */
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: 0.3s;
 }
 
-.dot.active {
-    background-color: #fff; /* Ponto ativo branco */
+.close-modal:hover { color: var(--muted); }
+
+/* Deixa o cursor com a "mãozinha" e um efeitinho na imagem do card */
+.card-img { cursor: pointer; overflow: hidden; }
+
+.card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+
+.card-img:hover img { transform: scale(1.05); } /* Dá um zoomzinho no card ao passar o mouse */
+
+/* RESPONSIVIDADE MOBILE */
+@media (max-width: 768px) {
+    header { padding: 15px 0; }
+    main { padding-top: 70px; }
+
+    .about-content { flex-direction: column; align-items: center; gap: 20px; }
+    .about-header-desktop { display: none; }
+    .about-header-mobile { display: block; }
+    
+    .about-info { text-align: center; }
+    
+    .bio-text { padding: 0 20px; /* Cria o espaçamento nas bordas (esquerda e direita) */}
+    
+    .bio-text p {text-align: center; }/* Muda para centralizado no mobile (o justificado em telas finas pode criar buracos feios entre as palavras) */
+    
+    .about-links { justify-content: center; }
+
+    .projects-grid { grid-template-columns: 1fr; }
+    
+    .slide { padding: 0; }
+    
+    nav ul li:first-child { margin-right: 15px; }
+    nav ul { gap: 15px; }
+
+    /* --- ESTILO DOS CONTROLES DO CARROSSEL NO MOBILE --- */
+    
+    .carousel-wrapper { padding-bottom: 50px; } /* Cria um espaço livre no fundo para os controles */
+
+    /* Fixa os pontinhos no centro da parte inferior */
+    .dots-container {position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%); margin-top: 0; width: auto; }
+
+    /* Traz as setas de volta e as posiciona na parte inferior */
+    .nav-btn { display: block; top: auto; bottom: 0;  transform: none;  font-size: 1.3rem; }
+
+    /* Posiciona as setas matematicamente ao lado dos pontos */
+    .prev { left: calc(50% - 80px); } 
+    .next { right: calc(50% - 80px); }
 }

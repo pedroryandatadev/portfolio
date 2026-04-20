@@ -1,102 +1,213 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio - Cosmos e Projetos</title>
+    <title>Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-theme="dark">
 
-    <canvas id="particles-canvas"></canvas>
+<header>
+    <div class="container header-content">
+        <nav>
+            <ul>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Project's</a></li>
+            </ul>
+        </nav>
+        <label class="theme-toggle">
+            <input type="checkbox" id="theme-switch" checked>
+            <span class="slider">
+                <span class="toggle-icon">☀️</span>
+                <span class="toggle-icon">🌙</span>
+            </span>
+        </label>
+    </div>
+</header>
 
-    <nav>
-        <a href="#cosmos" class="logo">Portifolio</a>
-        <div class="nav-links">
-            <a href="#cosmos">Home</a>
-            <a href="#projects">Project's</a>
+<main>
+    <section id="about" class="container about-section">
+        <div class="about-header-mobile">
+            <h1>Pedro Ryan</h1>
+            <p class="job-title">Data Scientist and Analyst</p>
         </div>
-    </nav>
-
-    <section id="cosmos">
-        <main>
-            <h1>Showcase Profile's<br>Access my repositories</h1>
-            <div class="cta-container">
-                <a href="#" target="_blank" class="btn btn-streamlit">
-                    <img src="img/streamlit-icon.png" alt="Streamlit">
-                    <span>Streamlit</span>
-                </a>
-                <a href="#" target="_blank" class="btn btn-github">
-                    <img src="img/github-icon.png" alt="Github">
-                    <span>Github</span>
-                </a>
-                <a href="#" target="_blank" class="btn btn-huggingface">
-                    <img src="img/huggingface-icon.png" alt="Hugging Face">
-                    <span>Hugging Face</span>
-                </a>
-                <a href="#" target="_blank" class="btn btn-figma">
-                    <img src="img/figma-icon.png" alt="Figma">
-                    <span>Figma</span>
-                </a>
+        
+        <div class="about-content">
+            <div class="about-image">
+                <img src="img/streamlit-icon.png" alt="Profile Image" class="profile-img">
+            </div>
+            
+            <div class="about-info">
+                <div class="about-header-desktop">
+                    <h1>Pedro Ryan</h1>
+                    <p class="job-title">Data Scientist and Analyst</p>
                 </div>
-        </main>
+                <div class="bio-text">
+                    <p>text about</p>
+                    <p>text about</p>
+                    <p>text about</p>
+                </div>
+                <div class="about-links">
+                    <a href="https://github.com/pedroryandatadev" target="_blank" class="btn-link"><span><img src="img/github-icon.png" alt="Github-Icon"></span> Github</a>
+                    <a href="https://share.streamlit.io/user/pedroryandatadev" target="_blank" class="btn-link"><span><img src="img/streamlit-icon.png" alt="Streamlit-Icon"></span> Streamlit</a>
+                    <a href="https://www.figma.com/@pedroryandev" target="_blank" class="btn-link"><span><img src="img/figma-icon.png" alt="Figma-Icon"></span> Figma</a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="projects">
-        <div class="projects-carousel-container">
-            <button class="carousel-control carousel-control-prev" id="prevBtn">&#10094;</button>
-            <button class="carousel-control carousel-control-next" id="nextBtn">&#10095;</button>
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title">See My Projects</h2>
+            <p class="section-subtitle">Test the interfaces and preview the code.</p>
 
-            <div class="projects-carousel">
-                <div class="carousel-item active">
-                    <div class="project-card">
-                        <div class="project-info">
-                            <h2 class="project-title">Análise de Dados com Python</h2>
-                            <p class="project-description">Descrição detalhada do seu projeto. Explique aqui o problema que você resolveu, as tecnologias utilizadas e os resultados obtidos com a análise.</p>
-                            <div class="project-buttons">
-                                <a href="#" target="_blank" class="project-btn project-btn-github">
-                                    <img src="img/github-icon.png" alt="Github icon">
-                                    <span>Github</span>
-                                </a>
-                                <a href="#" target="_blank" class="project-btn project-btn-streamlit">
-                                    <img src="img/streamlit-icon.png" alt="Streamlit icon">
-                                    <span>Streamlit</span>
-                                </a>
+            <div class="carousel-wrapper">
+                <button class="nav-btn prev">◀</button>
+                <button class="nav-btn next">▶</button>
+                
+                <div class="carousel-container">
+                    <div class="carousel-track">
+                        <div class="slide">
+                            <h3 class="category-title">Machine Learning</h3>
+                            <div class="projects-grid">
+                                <div class="card">
+                                    <div class="card-img"></div>
+                                    <div class="card-body">
+                                        <h4>Building</h4>
+                                        <p>Developing</p>
+                                        <div class="card-footer">
+                                            <!-- Links -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-img"></div>
+                                    <div class="card-body">
+                                        <h4>Building</h4>
+                                        <p>Developing</p>
+                                        <div class="card-footer">
+                                            <!-- Links -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-img"></div>
+                                    <div class="card-body">
+                                        <h4>Building</h4>
+                                        <p>Developing</p>
+                                        <div class="card-footer">
+                                            <!-- Links -->
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="project-image-container">
-                            <img src="https://via.placeholder.com/600x500/DEDEDE/333333?text=Imagem+do+Projeto" alt="Imagem de demonstração do projeto">
+                        
+                        <div class="slide">
+                            <h3 class="category-title">Data Analytic</h3>
+                            <div class="projects-grid">
+                                <div class="card">
+                                    <div class="card-img"><img src="img/preview-project-stock.png" alt="Project Stock"></div>
+                                    <div class="card-body">
+                                        <h4>Stocks</h4>
+                                        <p>A stocks analysis tool that displays progress over time with charts showing performance and comparison indicators. It also allows users to calculate investments and convert currencies for better strategy planning.</p>
+                                        <div class="card-footer">
+                                            <a href="https://consult-stocks.streamlit.app" target="_blank" class="btn-link"><span><img src="img/streamlit-icon.png" alt="Streamlit-Icon"></span> Test</a> 
+                                            <a href="https://github.com/pedroryandatadev/stocks" target="_blank" class="btn-link"><span><img src="img/github-icon.png" alt="Github-Icon"></span> Code</a>
+                                        </div>                                    
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-img"></div>
+                                    <div class="card-body">
+                                        <h4>Building</h4>
+                                        <p>Developing</p>
+                                        <div class="card-footer">
+                                            <!-- Links -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-img"></div>
+                                    <div class="card-body">
+                                        <h4>Building</h4>
+                                        <p>Developing</p>
+                                        <div class="card-footer">
+                                            <!-- Links -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+                        <div class="slide">
+                            <h3 class="category-title">Web Scraping</h3>
+                            <div class="projects-grid">
+                                <div class="card">
+                                    <div class="card-img"><img src="img/preview-project-steam-webscraping.png" alt="Project Steam Web Scraping"></div>
+                                    <div class="card-body">
+                                        <h4>Steam Web Scraping</h4>
+                                        <p>An automated system that periodically monitors price fluctuations and discounts on specific products in the Steam store, notifying the user via Telegram when the desired price is reached.</p>
+                                        <div class="card-footer"> 
+                                            <a href="https://github.com/pedroryandatadev/steam-web-scraping" target="_blank" class="btn-link"><span><img src="img/github-icon.png" alt="Github-Icon"></span> Code</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-img"></div>
+                                    <div class="card-body">
+                                        <h4>Building</h4>
+                                        <p>Developing</p>
+                                        <div class="card-footer">
+                                            <!-- Links -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-img"></div>
+                                    <div class="card-body">
+                                        <h4>Building</h4>
+                                        <p>Developing</p>
+                                        <div class="card-footer">
+                                            <!-- Links -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 
-                <div class="carousel-item">
-                    <div class="project-card">
-                        <div class="project-info">
-                            <h2 class="project-title">Modelo de Machine Learning</h2>
-                            <p class="project-description">Outra descrição detalhada. Fale sobre o modelo preditivo, a acurácia alcançada e como ele pode ser aplicado no mundo real.</p>
-                            <div class="project-buttons">
-                                <a href="#" target="_blank" class="project-btn project-btn-github">
-                                    <img src="img/github-icon.png" alt="Github icon">
-                                    <span>Github</span>
-                                </a>
-                                <a href="#" target="_blank" class="project-btn project-btn-streamlit">
-                                    <img src="img/streamlit-icon.png" alt="Streamlit icon">
-                                    <span>Streamlit</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-image-container">
-                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*_fR-2Yg-xaWXssnj08Zqeg.jpeg" alt="Imagem de demonstração do projeto 2">
-                        </div>
-                    </div>
+                <div class="dots-container">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
                 </div>
             </div>
-
-            <div class="carousel-indicators" id="indicators"></div>
         </div>
     </section>
+</main>
 
-    <script src="js/script.js"></script>
+<footer>
+    <div class="container footer-content">
+        <div class="footer-links">
+            <a href="https://github.com/pedroryandatadev" target="_blank">Github</a>
+            <a href="https://share.streamlit.io/user/pedroryandatadev" target="_blank">Streamlit</a>
+            <a href="https://www.figma.com/@pedroryandev" target="_blank">Figma</a>
+        </div>
+        <p>© 2026 Pedro Ryan (pedroryandatadev). All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Modal for image preview (used in the project cards, but can be adapted for other images as well): -->
+<div id="image-modal" class="modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="expanded-img">
+</div>
+
+<script src="js/script.js"></script>
 </body>
 </html>
