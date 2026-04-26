@@ -49,7 +49,7 @@ main { padding-top: 80px; }
 
 /* BIO TEXT*/
 .bio-text { flex: 1; max-width: 100%; }
-.bio-text p { margin-bottom: 15px; color: var(--muted); line-height: 1.6; word-break: break-all;text-align: justify; } /* Deixa o parágrafo mais "normal" e alinhado */
+.bio-text p { margin-bottom: 15px; color: var(--muted); line-height: 1.6; overflow-wrap: break-all; text-align: justify; } /* Deixa o parágrafo mais "normal" e alinhado */
 
 .about-links { display: flex; gap: 15px; margin-top: 20px; }
 .btn-link { background: var(--accent); color: var(--text); padding: 10px 20px; border-radius: 5px; text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 8px; transition: var(--transition);}
